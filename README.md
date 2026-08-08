@@ -28,12 +28,14 @@ Terraform_Nav/
 1. Create a VPC
     - Define a Virtual Private Cloud (VPC) using the CIDR block specified in variables.tf.
     - This provides an isolated network environment for all AWS resources.
-![vpc](../images/terraform_vpc.jpeg)
+      
+![vpc](/images/terraform_vpc.jpeg)
 
 2. Create Two Subnets
     - Add two public subnets (10.0.0.0/24 and 10.0.1.0/24) in different Availability Zones (us-east-1a and us-east-1b).
     - Enable automatic public IP assignment for instances launched in these subnets.
-![vpc](../images/terraform_subnet.jpeg)
+      
+![vpc](/images/terraform_subnet.jpeg)
 
 3. Create an Internet Gateway
     - Attach an Internet Gateway to the VPC.
@@ -42,8 +44,10 @@ Terraform_Nav/
 4. Create a Route Table and Associate It
     - Define a route table with a default route (0.0.0.0/0) pointing to the Internet Gateway.
     - Associate this route table with both subnets so they become public.
-![vpc](../images/terraform_rt.jpeg)
-![vpc](../images/terraform_step1.png)
+      
+![vpc](images/terraform_rt.jpeg)
+
+![vpc](/images/terraform_step1.png)
 
 5. Create a Security Group
     - Configure inbound rules to allow:
@@ -55,42 +59,52 @@ Terraform_Nav/
 6. Create an S3 Bucket
     - Define an S3 bucket for storage.
     - This can be used for logs, backups, or static content.
-![vpc](../images/terraform_s3.jpeg)
+      
+![vpc](/images/terraform_s3.jpeg)
 
 7. Launch Two EC2 Instances
     - Deploy two t2.micro instances in different subnets.
     - Use Amazon Ubuntu AMI.
     - Apply startup scripts (userdata.sh and userdata1.sh) to configure webservers.
     -  Attach the security group for secure access.
-![vpc](../images/terraform_instances.jpeg)
-![vpc](../images/terraform_step2.png)
+      
+![vpc](/images/terraform_instances.jpeg)
+
+![vpc](/images/terraform_step2.png)
 
 Here Check the public ip's are accessible of both the instances.
-![vpc](../images/terraform_output1.png)
-![vpc](../images/terraform_output2.png)
+
+![vpc](/images/terraform_output1.png)
+
+![vpc](/images/terraform_output2.png)
 
 8. Create an Application Load Balancer (ALB)
     - Deploy an ALB across both subnets.
     - Attach the security group.
     - This distributes incoming traffic across the EC2 instances.
-![vpc](../images/terraform_step3.jpeg)
+      
+![vpc](/images/terraform_step3.jpeg)
 
 9. Create a Target Group and Attach Instances
     - Define a target group for HTTP traffic on port 80.
     - Attach both EC2 instances to the target group.
     - Configure health checks to monitor instance availability.
-![vpc](../images/terraform_targetgroup.jpeg)
+      
+![vpc](/images/terraform_targetgroup.jpeg)
 
 10. Create a Load Balancer Listener
     - Configure the ALB to listen on port 80 (HTTP).
     - Forward traffic to the target group.
-![vpc](../images/terraform_loadbalancer.jpeg)
+      
+![vpc](/images/terraform_loadbalancer.jpeg)
 
 11. Output the Load Balancer DNS
     - Print the DNS name of the ALB after deployment.
     - Use this DNS in a browser to access the webservers.
-![vpc](../images/terraform_outputdns1.png)
-![vpc](../images/terraform_outputdns2.png)
+    - 
+![vpc](/images/terraform_outputdns1.png)
+
+![vpc](/images/terraform_outputdns2.png)
 ****
 ▶️ Deployment Flow
 
@@ -112,5 +126,5 @@ To destroy all resources:
 ```
 terraform destroy
 ```
-![vpc](../images/terraform_destroy.png)
+![vpc](/images/terraform_destroy.png)
 
