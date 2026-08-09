@@ -128,5 +128,5 @@ terraform destroy
 ```
 ![vpc](/images/terraform_destroy.png)
 
-![vpc](terraform_image.png)
+![vpc](/images/terraform_image1.png)
 
